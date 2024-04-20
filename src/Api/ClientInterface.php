@@ -1,4 +1,10 @@
 <?php
+/*
+ * @software CR0 HTTP Client - Request library focused on practicality and simplicity
+ * @author Bruno Venancio Alves <boteistem@gmail.com>
+ * @copyrigh (c) 2024
+ * @license  Free
+ */
 namespace CR0\HTTPClient\Api;
 use CR0\HTTPClient\Api\HttpResponse;
 interface ClientInterface
@@ -21,8 +27,36 @@ interface ClientInterface
      *
      * @param  array $headers
      * @return self
+     */    
+    /**
+     * setMaxRedirect
+     *
+     * @param  int $max
+     * @return self
      */
+    public function setMaxRedirect(int $max) : self;     
+    /**
+     * getMaxRedirect
+     *
+     * @return int
+     */
+    public function getMaxRedirect() : int;
     public function setHeader(array $headers) : self;    
+    /**
+     * setTimeOut
+     *
+     * time in seconds
+     * @param  int $timeout
+     * @param  int $timeexpired
+     * @return self
+     */
+    public function setTimeOut(int $timeout, int $timeexpired) : self;    
+    /**
+     * get a array with 2 values: time out and timeoutexpired
+     *
+     * @return array
+     */
+    public function getTimeOut() : array;    
     /**
      * add specific header for the request
      *
@@ -98,8 +132,42 @@ interface ClientInterface
      * getBody
      *
      * @return string
+     */    
+    /**
+     * get base URL
+     *
+     * @return string
      */
-    public function getBody() : string;
+    public function getBaseUrl() : string;    
+    /**
+     * getBody
+     *
+     * @return string
+     */
+    public function getBody() : string;    
+    /**
+     * isJson
+     *
+     * @return self
+     */
+    public function isJson() : self;    
+    /**
+     * isForm
+     *
+     * @return self
+     */
+    public function isForm() : self;    
+    /**
+     * getRequestType
+     *
+     * @return string
+     */
+    public function getRequestType() : string;    
+    /**
+     * reset
+     *
+     * @return void
+     */
     public function reset() : void;    
     /**
      * send request and return body from response

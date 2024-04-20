@@ -1,13 +1,70 @@
 <?php
+/*
+ * @software CR0 HTTP Client - Request library focused on practicality and simplicity
+ * @author Bruno Venancio Alves <boteistem@gmail.com>
+ * @copyrigh (c) 2024
+ * @license  Free
+ */
 namespace CR0\HTTPClient\Api;
+use CR0\HTTPClient\Response\Response;
 interface BuilderResponse
-{
-    public function setResponse(string $response) : self;
-    public function setStatusCode(int $status): self;
-    public function setHeaders(array $headers = []) : self;
-    public function setCookies(string $cookies) : self;
-    public function getResponse() : string;
-    public function getStatusCode() : int;
-    public function getHeaders() : array;
-    public function getCookies() : string;
+{    
+    /**
+     * setResponse
+     *
+     * @param  mixed $response
+     * @return self
+     */
+    public function setResponse(string $response) : self;    
+    /**
+     * setStatusCode
+     *
+     * @param  mixed $status
+     * @return self
+     */
+    public function setStatusCode(int $status): self;    
+    /**
+     * setHeaders
+     *
+     * @param  mixed $headers
+     * @return self
+     */
+    public function setHeaders(array $headers = []) : self;    
+    /**
+     * setCookies
+     *
+     * @param  mixed $cookies
+     * @return self
+     */
+    public function setCookies(array $cookies) : self;    
+    /**
+     * getResponse
+     *
+     * @return string
+     */
+    public function getResponse() : string;    
+    /**
+     * getStatusCode
+     *
+     * @return int
+     */
+    public function getStatusCode() : int;    
+    /**
+     * getHeaders
+     *
+     * @return array
+     */
+    public function getHeaders() : array;    
+    /**
+     * getCookies
+     *
+     * @return array
+     */
+    public function getCookies() : array;    
+    /**
+     * build
+     *
+     * @return Response
+     */
+    public function build() : Response;
 }

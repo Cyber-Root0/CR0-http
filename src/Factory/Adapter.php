@@ -1,4 +1,10 @@
 <?php
+/*
+ * @software CR0 HTTP Client - Request library focused on practicality and simplicity
+ * @author Bruno Venancio Alves <boteistem@gmail.com>
+ * @copyrigh (c) 2024
+ * @license  Free
+ */
 namespace CR0\HTTPClient\Factory;
 use CR0\HTTPClient\Client;
 use CR0\HTTPClient\Api\DriverInterface;
