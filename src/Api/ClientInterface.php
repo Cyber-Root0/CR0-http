@@ -1,5 +1,6 @@
 <?php
 namespace CR0\HTTPClient\Api;
+use CR0\HTTPClient\Api\HttpResponse;
 interface ClientInterface
 {
     public function __construct(string $baseurl);    
@@ -105,5 +106,5 @@ interface ClientInterface
      *
      * @return string
      */
-    public function send() : string;
+    public function send(string $uri) : HttpResponse | \Exception;
 }

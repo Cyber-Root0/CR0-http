@@ -1,10 +1,11 @@
 <?php
 namespace CR0\HTTPClient\Validation;
-use CR0\HTTPClient\Client;
-class Rules
+use CR0\HTTPClient\Api\RulesInterface;
+use CR0\HTTPClient\Api\ClientInterface;
+class Rules implements RulesInterface
 {
     public function __construct(
-        protected Client $client
+        protected ClientInterface $client
     ){
 
     }    
@@ -13,7 +14,7 @@ class Rules
      *
      * @return void
      */
-    public function execute(){
-        
+    public function execute() : bool{
+        return true;        
     }
 }

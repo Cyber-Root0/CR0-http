@@ -1,10 +1,11 @@
 <?php
 namespace CR0\HTTPClient;
 use CR0\HTTPClient\Api\ClientInterface;
+use CR0\HTTPClient\Api\HttpResponse;
 use CR0\HTTPClient\Validation\Rules;
-final class Client implements ClientInterface
+use CR0\HTTPClient\Factory\Adapter;
+final class Client implements ClientInterface 
 {
-
     private Rules $validation;
     private array $options = [];
     private array $headers = [];
@@ -153,10 +154,16 @@ final class Client implements ClientInterface
     /**
      * send request and return body from response
      *
-     * @return string
-     */
-    public function send() : string{
-        return '';
+     * @return HttpResponse
+     */ 
+    public function send(string $uri) : HttpResponse | \Exception{
+        
+        $validation = $this->validation->execute();
+        if ($validation){
+            $driver = Adapter::create($this);
+            return $driver->execute($uri);
+        }
+        throw new \Exception('Request não pode ser executado, erro de validação.');
     }
     private function isEmpty($var){
         return empty($var);
